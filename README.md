@@ -1,5 +1,5 @@
-# Vue 3 + TypeScript + Vite
+Mettre en place la pagination
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+1. ajouter bouton suivant / précedent
+2. Quand je clique sur un bouton, je remplace la page actuelle par la page demandée
+3. désactiver les boutons quand la page précédente ou suivante n'est pas dispo
