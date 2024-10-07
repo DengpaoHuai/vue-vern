@@ -1,48 +1,14 @@
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue';
-
-type Planet = {
-    name: string;
-    population: string;
-    diameter: string;
-    climate: string;
-    terrain: string;
-    gravity: string;
-    rotation_period: string;
-    orbital_period: string;
-    surface_water: string;
-    residents: string[];
-    films: string[];
-    created: string;
-    edited: string;
-    url: string;
-
-}
-
-type PlanetResponse = {
-    count: number;
-    next: string | null;
-    previous: string | null;
-    results: Planet[];
-}
-
-const planets = ref<Array<Planet>>([]);
-
-onMounted(() => {
-    fetch("https://swapi.dev/api/planets/")
-        .then((response) => response.json())
-        .then((data: PlanetResponse) => {
-            console.log(data);
-            planets.value = data.results;
-        });
-})
+import useFetch from '../composables/useFetch';
+import { PlanetResponse } from '../types/planet';
+const { data, loading, error } = useFetch<PlanetResponse>('https://swapi.dev/api/planets')
 
 </script>
 
 <template>
-
     <div>
-        <div v-for="planet in planets">
+        <div v-if="loading">chargement...</div>
+        <div v-for="planet in data?.results">
             <h2>
                 {{ planet.name }}
             </h2>
@@ -51,5 +17,4 @@ onMounted(() => {
             </p>
         </div>
     </div>
-
 </template>
