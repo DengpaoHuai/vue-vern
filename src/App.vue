@@ -4,7 +4,7 @@ import CardComponent from './components/CardComponent.vue';
 </script>
 
 <template>
-  <CardComponent>
+  <CardComponent title="title : chose" footer="test">
     <p>tout et n'importe quoi</p>
   </CardComponent>
 </template>
