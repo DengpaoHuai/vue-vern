@@ -6,6 +6,7 @@ import { onMounted, onUnmounted } from 'vue';
 const { data, loading } = useFetch<PlanetResponse>('https://swapi.dev/api/planets')
 
 const router = useRouter()
+
 const scrollListener = (e: Event) => {
     console.log(e)
 }
