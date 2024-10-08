@@ -1,24 +1,17 @@
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
+import { storeToRefs } from 'pinia';
 import { deleteButter, getButters } from '../services/butter';
-import { Butter } from '../types/butter';
+import useButterStore from '../store/useButterStore';
+
+const { butters } = storeToRefs(useButterStore())
 
 
-
-
-const butters = ref<Butter[]>([])
-
-onMounted(() => {
-    getButters().then((data: Butter[]) => {
-        butters.value = data
-    })
-})
-
+/*
 const deleteItem = (id: string) => {
     deleteButter(id).then(() => {
         butters.value = butters.value.filter(butter => butter._id !== id)
     })
-}
+}*/
 
 </script>
 

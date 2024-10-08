@@ -2,8 +2,10 @@
 import { reactive } from 'vue';
 import { createButter } from '../services/butter';
 import { useRouter } from 'vue-router';
+import useButterStore from '../store/useButterStore';
 
 const router = useRouter()
+const { addButter } = useButterStore()
 
 const form = reactive({
     name: '',
@@ -14,7 +16,7 @@ const form = reactive({
 
 const submit = () => {
     console.log(form)
-    createButter(form).then(() => {
+    addButter(form).then(() => {
         router.push('/butter')
     })
 }
