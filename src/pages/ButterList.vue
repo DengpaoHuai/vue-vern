@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
-import { getButters } from '../services/butter';
+import { deleteButter, getButters } from '../services/butter';
 import { Butter } from '../types/butter';
 
 
@@ -13,6 +13,12 @@ onMounted(() => {
         butters.value = data
     })
 })
+
+const deleteItem = (id: string) => {
+    deleteButter(id).then(() => {
+        butters.value = butters.value.filter(butter => butter._id !== id)
+    })
+}
 
 </script>
 
@@ -31,6 +37,9 @@ onMounted(() => {
             <p>
                 Price : {{ butter.price }}
             </p>
+            <button @click="deleteItem(butter._id)">
+                delete
+            </button>
         </div>
     </div>
 
